@@ -1,7 +1,40 @@
 <Container>:
+    rows: 4
+    padding: 30
 
-    Button:
-        spacing: 100
-        pos_hint:  {'center_x': 0.75, 'center_y': 0.95}
-        size_hint: 0.6, 0.1
-        text: '--------'
+    text_input: text_input
+
+    label: label
+
+    image_screen: image_screen
+
+    TextInput:
+        id: text_input
+        size_hint_y: 0.4
+        multiline: True
+    Image:
+        id: image_screen
+        source: 'png/Trahat.jpg'
+    Label:
+        id: label
+        text: "Тут мог быть ваш текст"
+        font_size: 20
+    BoxLayout:
+        Button:
+            text: 'Трахать?'
+            on_release:
+                root.change_pic(0);
+        Button:
+            text: 'Помогите'
+            on_release:
+                root.change_pic(1);
+        Button:
+            text: 'ШАД'
+            on_release:
+                root.change_pic(2);
+        Button:
+            text: 'Сменить текст'
+            on_release:
+                root.change_text();
+
+
