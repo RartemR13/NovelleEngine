@@ -13,14 +13,20 @@ Builder.load_file('main.kv')
 class Container(Screen):
     Music = SoundLoader.load('/Users/nickolay.yakovchuk/PycharmProjects/NovelleEngine/start_screen/forest.wav')
 
+    # plays - function which can turn on/off music by press it
+
     def plays(self):
         if Container.Music.state == 'stop':
             Container.Music.play()
         else:
             Container.Music.stop()
 
+    # fs - function which can on window mode
+
     def fs(self):
         Window.fullscreen = True
+
+    # ws - function which can on window mode
 
     def ws(self):
         Window.fullscreen = False
