@@ -1,6 +1,5 @@
 <Container>:
-    orientation: 'vertical'
-    pudding: 200
+
 
     canvas:
         Color:
@@ -9,24 +8,58 @@
             pos: self.pos
             size: self.size
 
+    Label:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.8, 'y': 0.001}
+        color: 0, 0, 0, 1
+        text: 'Dota Uebki Engine v0'
+
     Button:
         size_hint: 0.2, 0.1
         pos_hint: {'x': 0.01, 'y': 0.88}
-        text: 'Начать Игру'
+        text: 'Start'
 
     Button:
         size_hint: 0.2, 0.1
         pos_hint: {'x': 0.01,'y': 0.77}
-        text: 'Загрузить'
+        text: 'Load'
+
+    Button:
+        id: pref_btn
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.78,'y': 0.88}
+        text: 'Preferences'
+        on_release: dropdown.open(self)
+
+
 
     Button:
         size_hint: 0.2, 0.1
         pos_hint: {'x': 0.01,'y': 0.66}
-        text: 'Настройки'
-
-
-    Button:
-        size_hint: 0.2, 0.1
-        pos_hint: {'x': 0.01,'y': 0.55}
-        text: 'Выход'
+        text: 'Exit'
         on_release: app.stop()
+
+
+
+    DropDown:
+        id: dropdown
+
+        Label:
+            markup: True
+            text: 'Format:'
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: '50dp'
+
+
+        Button:
+            text: 'FullScreen'
+            size_hint_y: None
+            height: '50dp'
+            on_release: Window.fullscreen = True # доделать
+
+
+        Button:
+            text: "Window"
+            size_hint_y: None
+            height: '50dp'
