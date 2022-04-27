@@ -4,9 +4,27 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
 from kivy.config import Config
+from kivy.core.audio import SoundLoader, Sound
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
 
-class Container(FloatLayout):
-    pass
+Builder.load_file('main.kv')
+
+class Container(Screen):
+    Music = SoundLoader.load('/Users/nickolay.yakovchuk/PycharmProjects/NovelleEngine/start_screen/forest.wav')
+
+    def plays(self):
+        if Container.Music.state == 'stop':
+            Container.Music.play()
+        else:
+            Container.Music.stop()
+
+    def fs(self):
+        Window.fullscreen = True
+
+    def ws(self):
+        Window.fullscreen = False
+
 
 
 class MainApp(App):

@@ -40,6 +40,12 @@
         on_release: app.stop()
 
 
+    Button:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.58, 'y':0.88}
+        text: 'Music On/Off'
+        on_release: root.plays()
+
 
     DropDown:
         id: dropdown
@@ -56,10 +62,11 @@
             text: 'FullScreen'
             size_hint_y: None
             height: '50dp'
-            on_release: Window.fullscreen = True # доделать
+            on_release: root.fs()
 
 
         Button:
             text: "Window"
             size_hint_y: None
             height: '50dp'
+            on_release: root.ws()
