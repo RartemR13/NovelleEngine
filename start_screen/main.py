@@ -13,7 +13,7 @@ Builder.load_file('main.kv')
 class Container(Screen):
     Music = SoundLoader.load('forest.wav')
 
-    # plays - function which can turn on/off music by press it
+    # plays - function which can turn on/off music by press same button
 
     def plays(self):
         if Container.Music.state == 'stop':
@@ -21,7 +21,7 @@ class Container(Screen):
         else:
             Container.Music.stop()
 
-    # fs - function which can on window mode
+    # fs - function which can on fullscreen mode
 
     def fs(self):
         Window.fullscreen = True
