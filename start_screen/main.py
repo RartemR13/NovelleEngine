@@ -11,7 +11,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 Builder.load_file('main.kv')
 
 class Container(Screen):
-    Music = SoundLoader.load('/Users/nickolay.yakovchuk/PycharmProjects/NovelleEngine/start_screen/forest.wav')
+    Music = SoundLoader.load('forest.wav')
 
     # plays - function which can turn on/off music by press it
 
