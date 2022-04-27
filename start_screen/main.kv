@@ -1,0 +1,32 @@
+<Container>:
+    orientation: 'vertical'
+    pudding: 200
+
+    canvas:
+        Color:
+            rgb: (0.98, 0.92, 0.84)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.01, 'y': 0.88}
+        text: 'Начать Игру'
+
+    Button:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.01,'y': 0.77}
+        text: 'Загрузить'
+
+    Button:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.01,'y': 0.66}
+        text: 'Настройки'
+
+
+    Button:
+        size_hint: 0.2, 0.1
+        pos_hint: {'x': 0.01,'y': 0.55}
+        text: 'Выход'
+        on_release: app.stop()
