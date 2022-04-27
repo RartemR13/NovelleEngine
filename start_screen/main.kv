@@ -2,74 +2,163 @@
     size_hint: 0.2, 0.1
 
 <Container>:
+    MenuScreenApp
+
+<ScreenOne>:
     MenuScreenApp:
 
 
-<MenuScreenApp>:
-
-
-    canvas:
-        Color:
-            rgb: (0.98, 0.92, 0.84)
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-    Label:
-        size_hint: 0.2, 0.1
-        pos_hint: {'x': 0.8, 'y': 0.001}
-        color: 0, 0, 0, 1
-        text: 'DUEngine v0'
-
-    GreyButton:
-        pos_hint: {'x': 0.01, 'y': 0.88}
-        text: 'Start'
-        # on_release:
-          #  root.next()
-
-    GreyButton:
-        pos_hint: {'x': 0.01,'y': 0.77}
-        text: 'Load'
-
-    GreyButton:
-        id: pref_btn
-        pos_hint: {'x': 0.78,'y': 0.88}
-        text: 'Preferences'
-        on_release: dropdown.open(self)
-
-
-
-    GreyButton:
-        pos_hint: {'x': 0.01,'y': 0.66}
-        text: 'Exit'
-        on_release: app.stop()
-
-
-    GreyButton:
-        pos_hint: {'x': 0.58, 'y':0.88}
-        text: 'Music On/Off'
-        on_release: root.plays()
-
-
-    DropDown:
-        id: dropdown
+        canvas:
+            Color:
+                rgb: (0.98, 0.92, 0.84)
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
         Label:
-            text: 'Format:'
+            size_hint: 0.2, 0.1
+            pos_hint: {'x': 0.8, 'y': 0.001}
             color: 0, 0, 0, 1
-            size_hint_y: None
-            height: '50dp'
+            text: 'DUEngine v0'
 
+
+        GreyButton:
+            pos_hint: {'x': 0.01, 'y': 0.88}
+            text: 'Start'
+            on_release:
+                root.manager.current = 'screen2'
+
+
+
+        GreyButton:
+            pos_hint: {'x': 0.01,'y': 0.77}
+            text: 'Load'
+
+        GreyButton:
+            id: pref_btn
+            pos_hint: {'x': 0.78,'y': 0.88}
+            text: 'Preferences'
+            on_release: dropdown.open(self)
+
+
+
+        GreyButton:
+            pos_hint: {'x': 0.01,'y': 0.66}
+            text: 'Exit'
+            on_release: app.stop()
+
+
+        GreyButton:
+            pos_hint: {'x': 0.58, 'y':0.88}
+            text: 'Music On/Off'
+            on_release: self.parent.plays()
+
+
+        DropDown:
+            id: dropdown
+
+            Label:
+                text: 'Format:'
+                color: 0, 0, 0, 1
+                size_hint_y: None
+                height: '50dp'
+
+
+            Button:
+                text: 'FullScreen'
+                size_hint_y: None
+                height: '50dp'
+                on_release: root.children[0].fs()
+
+
+            Button:
+                text: "Window"
+                size_hint_y: None
+                height: '50dp'
+                on_release: root.children[0].ws()
+
+
+<ScreenTwo>:
+    label: label
+    forward: forward
+    left: left
+    r: r
+    back: back
+    FloatLayout:
+        Image:
+            id: forward
+            size_hint_x: 0.2
+            keep_ratio: False
+            allow_stretch: True
+            pos_hint: {'x': 0.5 ,'y': 0.8}
+            source: 'wall.jpeg'
+        Image:
+            id: left
+            size_hint_x: 0.2
+            keep_ratio: False
+            allow_stretch: True
+            pos_hint: {'x': 0.1 ,'y': 0.65}
+            source: 'wall.jpeg'
+        Image:
+            id: r
+            size_hint_x: 0.2
+            keep_ratio: False
+            allow_stretch: True
+            pos_hint: {'x': 0.9 ,'y': 0.65}
+            source: 'wall.jpeg'
+        Image:
+            id: back
+            size_hint_x: 0.2
+            keep_ratio: False
+            allow_stretch: True
+            pos_hint: {'x': 0.5 ,'y': 0.1}
+            source: 'wall.jpeg'
+    Label:
+        id: label
+        text: '0'
+
+    GridLayout:
+        size_hint_y: 0.33
+        rows: 2
+        cols: 2
+        Button:
+            text: 'Forward'
+            on_release:
+                root.manager.try_move(0)
+        Button:
+            text: 'Right'
+            on_release:
+                root.manager.try_move(1)
+        Button:
+            text: 'Left'
+            on_release:
+                root.manager.try_move(2)
+        Button:
+            text: 'Back'
+            on_release:
+                root.manager.try_move(3)
+
+    FloatLayout:
 
         Button:
-            text: 'FullScreen'
-            size_hint_y: None
-            height: '50dp'
-            on_release: root.fs()
+            text: 'Exit'
+            pos_hint: {'x': 0.78,'y': 0.88}
+            on_release:
+                root.manager.current = 'screen1'
 
+<Manager>:
+    id: screen_manager
 
-        Button:
-            text: "Window"
-            size_hint_y: None
-            height: '50dp'
-            on_release: root.ws()
+    screen_one: screen_one
+    screen_two: screen_two
+    #img: img
+
+    ScreenOne:
+        id: screen_one
+        name: 'screen1'
+        manager: screen_manager
+
+    ScreenTwo:
+        id: screen_two
+        name: 'screen2'
+        manager: screen_manager
