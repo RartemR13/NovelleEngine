@@ -1,4 +1,11 @@
+<GreyButton@Button>:
+    size_hint: 0.2, 0.1
+
 <Container>:
+    MenuScreenApp:
+
+
+<MenuScreenApp>:
 
 
     canvas:
@@ -14,34 +21,31 @@
         color: 0, 0, 0, 1
         text: 'DUEngine v0'
 
-    Button:
-        size_hint: 0.2, 0.1
+    GreyButton:
         pos_hint: {'x': 0.01, 'y': 0.88}
         text: 'Start'
+        # on_release:
+          #  root.next()
 
-    Button:
-        size_hint: 0.2, 0.1
+    GreyButton:
         pos_hint: {'x': 0.01,'y': 0.77}
         text: 'Load'
 
-    Button:
+    GreyButton:
         id: pref_btn
-        size_hint: 0.2, 0.1
         pos_hint: {'x': 0.78,'y': 0.88}
         text: 'Preferences'
         on_release: dropdown.open(self)
 
 
 
-    Button:
-        size_hint: 0.2, 0.1
+    GreyButton:
         pos_hint: {'x': 0.01,'y': 0.66}
         text: 'Exit'
         on_release: app.stop()
 
 
-    Button:
-        size_hint: 0.2, 0.1
+    GreyButton:
         pos_hint: {'x': 0.58, 'y':0.88}
         text: 'Music On/Off'
         on_release: root.plays()
@@ -51,7 +55,6 @@
         id: dropdown
 
         Label:
-            markup: True
             text: 'Format:'
             color: 0, 0, 0, 1
             size_hint_y: None
